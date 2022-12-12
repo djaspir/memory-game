@@ -37,8 +37,6 @@ const Main = () => {
 
   const handlePokemonClick = (e) => {
     const pokemonName = e.target.parentNode.lastChild.textContent;
-
-    console.log(pokemonName);
     playRound(pokemonName);
     setPokemon(shufflePokemon(pokemon));
   };
