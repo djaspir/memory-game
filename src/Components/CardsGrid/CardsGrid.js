@@ -7,4 +7,5 @@ const CardsGrid = ({ pokemon, handlePokemonClick }) => {
 
   return <div className="card-grid">{pokemonCards}</div>;
 };
+
 export default CardsGrid;
