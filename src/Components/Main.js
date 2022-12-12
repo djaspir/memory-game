@@ -35,10 +35,34 @@ const Main = () => {
     return pokemons;
   };
 
+  const handlePokemonClick = (e) => {
+    const pokemonName = e.target.parentNode.lastChild.textContent;
+
+    console.log(pokemonName);
+    playRound(pokemonName);
+    setPokemon(shufflePokemon(pokemon));
+  };
+
+  const playRound = (pokemonName) => {
+    if (clickedPokemon.includes(pokemonName)) {
+      resetGame();
+    } else {
+      const newScore = currentScore + 1;
+      if (newScore > highScore) setHighScore(newScore);
+      setCurrentScore(newScore);
+      setClickedPokemon((prevState) => [...prevState, pokemonName]);
+    }
+  };
+
+  const resetGame = () => {
+    setClickedPokemon([]);
+    setCurrentScore(0);
+  };
+
   return (
     <div>
       <ScoreBoard currentScore={currentScore} highScore={highScore} />
-      <CardsGrid pokemon={pokemon} />
+      <CardsGrid pokemon={pokemon} handlePokemonClick={handlePokemonClick} />
     </div>
   );
 };
